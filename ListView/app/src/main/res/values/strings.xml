@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">List View</string>
+    <string-array name="miSpinner">
+        <item>Español</item>
+        <item>Ugandes</item>
+        <item>Guiri</item>
+        <item>Chino</item>
+        <item>Congoleño</item>
+    </string-array>
+</resources>
