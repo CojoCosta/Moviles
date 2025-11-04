@@ -5,7 +5,7 @@
         android:id="@+id/listado"
         android:title="Listado Completo" />
     <item
-        android:id="@+id/favoritos"
+        android:id="@+id/listaFavs"
         android:title="Listado Favoritos" />
     <item
         android:id="@+id/añadir"
