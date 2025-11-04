@@ -65,10 +65,14 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
         MyViewHolder mvh = new MyViewHolder(elemento);
         return mvh;
     }
-
+    //Añadir datos a cada celda
     @Override
     public void onBindViewHolder(@NonNull MiAdaptador.MyViewHolder holder, int position) {
-
+        Pelicula peli = this.peliculas.get(position);
+        holder.obtenerTitulo().setText(peli.getDirector());
+        holder.obtenerDirector().setText(peli.getDirector());
+        holder.obtenerPortada().setImageResource(peli.getPortada());
+        holder.obtenerPG().setImageResource(peli.getClasi());
     }
 
     @Override
