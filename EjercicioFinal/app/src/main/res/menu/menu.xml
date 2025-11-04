@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listado"
+        android:title="Listado Completo" />
+    <item
+        android:id="@+id/favoritos"
+        android:title="Listado Favoritos" />
+    <item
+        android:id="@+id/añadir"
+        android:title="Añadir Película" />
+    <item
+        android:id="@+id/mostrar"
+        android:title="Mostrar 1 o 2 columnas" />
+    <item
+        android:id="@+id/pelisFav"
+        android:title="Mostrar películas favoritas" />
+</menu>
