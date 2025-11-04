@@ -63,7 +63,7 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
     public MiAdaptador.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View elemento = LayoutInflater.from(parent.getContext()).inflate(R.layout.celda, parent, false);
         MyViewHolder mvh = new MyViewHolder(elemento);
-        return null;
+        return mvh;
     }
 
     @Override
