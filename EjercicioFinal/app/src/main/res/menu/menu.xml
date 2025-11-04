@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/listado"
-        android:title="Listado Completo" />
+        android:icon="?attr/actionModePasteDrawable"
+        android:title="Listado Completo"
+        app:showAsAction="always" />
     <item
         android:id="@+id/listaFavs"
-        android:title="Listado Favoritos" />
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="Listado Favoritos"
+        app:showAsAction="always" />
     <item
         android:id="@+id/añadir"
-        android:title="Añadir Película" />
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Añadir Película"
+        app:showAsAction="always" />
     <item
         android:id="@+id/mostrar"
-        android:title="Mostrar 1 o 2 columnas" />
+        android:icon="@android:drawable/ic_dialog_dialer"
+        android:title="Mostrar 1 o 2 columnas"
+        app:showAsAction="always" />
     <item
         android:id="@+id/pelisFav"
-        android:title="Mostrar películas favoritas" />
+        android:icon="@android:drawable/star_on"
+        android:title="Mostrar Películas Favoritas"
+        app:showAsAction="always" />
 </menu>
