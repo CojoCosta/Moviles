@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.PointerIcon;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -35,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         rv = findViewById(R.id.recyclerView);
         btOcultar = findViewById(R.id.button);
         setSupportActionBar(tb);
+        btOcultar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -47,14 +56,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         ab = getSupportActionBar();
-        switch (item.getItemId()){
-            //case R.id.listado:
-            //case R.id.listaFavs:
-            //case R.id.añadir:
-            //case R.id.mostrar:
-            //case R.id.pelisFav:
+        int id =item.getItemId();
+            if (id == R.id.listado){
+                Toast.makeText(this, "Listado", Toast.LENGTH_SHORT).show();
+                return true;
+            }else if(id == R.id.listaFavs){
+                Toast.makeText(this, "Favoritas", Toast.LENGTH_SHORT).show();
+                return true;
+            }else if (id == R.id.añadir){
+                Toast.makeText(this, "Añadida", Toast.LENGTH_SHORT).show();
+                return true;
+            }else if(id == R.id.mostrar){
+                Toast.makeText(this, "Mostrar", Toast.LENGTH_SHORT).show();
+                return true;
+            }else if (id == R.id.pelisFav){
+                Toast.makeText(this, "Favoritas2", Toast.LENGTH_SHORT).show();
+                return true;
+            }
 
-        }
+
         return super.onOptionsItemSelected(item);
     }
+
 }
