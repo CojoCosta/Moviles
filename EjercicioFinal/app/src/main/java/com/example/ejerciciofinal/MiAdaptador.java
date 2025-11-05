@@ -74,14 +74,14 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
         holder.obtenerPortada().setImageResource(peli.getPortada());
         holder.obtenerPG().setImageResource(peli.getClasi());
         if (selectedPos == position){
-            holder.itemView.setBackgroundResource(R.color.naranja);
-        } else {
             holder.itemView.setBackgroundResource(R.color.gris);
+        } else {
+            holder.itemView.setBackgroundResource(R.color.naranja);
         }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.peliculas.size();
     }
 }

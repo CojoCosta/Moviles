@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.PointerIcon;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,13 +16,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar tb;
     RecyclerView rv;
     ActionBar ab;
     Button btOcultar;
+    RecyclerView.LayoutManager miLayoutManager;
+    MiAdaptador miAdaptador;
+    ArrayList<Pelicula> peliculas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +39,24 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        peliculas = Datos.rellenaPeliculas();
+        miAdaptador = new MiAdaptador(peliculas);
+        miLayoutManager = new GridLayoutManager(this, 1);
         tb = findViewById(R.id.toolbar);
         rv = findViewById(R.id.recyclerView);
-        btOcultar = findViewById(R.id.button);
+        rv.setLayoutManager(miLayoutManager);
+        rv.setAdapter(miAdaptador);
         setSupportActionBar(tb);
+
+        btOcultar = findViewById(R.id.button);
         btOcultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (ab.isShowing()){
+                    ab.hide();
+                } else{
+                    ab.show();
+                }
             }
         });
     }
