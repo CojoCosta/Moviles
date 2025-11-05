@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar tb;
     RecyclerView rv;
     ActionBar ab;
+    Button btOcultar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         });
         tb = findViewById(R.id.toolbar);
         rv = findViewById(R.id.recyclerView);
+        btOcultar = findViewById(R.id.button);
         setSupportActionBar(tb);
     }
 
