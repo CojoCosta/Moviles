@@ -6,6 +6,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar tb;
     RecyclerView rv;
     ActionBar ab;
-    Button btOcultar;
+    ImageButton btOcultar;
     RecyclerView.LayoutManager miLayoutManager;
     MiAdaptador miAdaptador;
     ArrayList<Pelicula> peliculas;
@@ -48,14 +49,16 @@ public class MainActivity extends AppCompatActivity {
         rv.setAdapter(miAdaptador);
         setSupportActionBar(tb);
 
-        btOcultar = findViewById(R.id.button);
+        btOcultar = findViewById(R.id.imageButton);
         btOcultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ab.isShowing()){
                     ab.hide();
+                    btOcultar.setImageResource(R.drawable.g);
                 } else{
                     ab.show();
+                    btOcultar.setImageResource(R.drawable.r);
                 }
             }
         });
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         int id =item.getItemId();
             if (id == R.id.listado){
                 Toast.makeText(this, "Listado", Toast.LENGTH_SHORT).show();
+
                 return true;
             }else if(id == R.id.listaFavs){
                 Toast.makeText(this, "Favoritas", Toast.LENGTH_SHORT).show();
