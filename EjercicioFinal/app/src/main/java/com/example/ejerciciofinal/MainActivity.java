@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btOcultar;
     RecyclerView.LayoutManager miLayoutManager;
     MiAdaptador miAdaptador;
+    TextView tv;
     ArrayList<Pelicula> peliculas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         miLayoutManager = new GridLayoutManager(this, 1);
         tb = findViewById(R.id.toolbar);
         rv = findViewById(R.id.recyclerView);
+        tv = findViewById(R.id.textView3);
         rv.setLayoutManager(miLayoutManager);
         rv.setAdapter(miAdaptador);
         setSupportActionBar(tb);
@@ -77,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         int id =item.getItemId();
             if (id == R.id.listado){
                 Toast.makeText(this, "Listado", Toast.LENGTH_SHORT).show();
-
                 return true;
             }else if(id == R.id.listaFavs){
                 Toast.makeText(this, "Favoritas", Toast.LENGTH_SHORT).show();

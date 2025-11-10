@@ -17,7 +17,7 @@ public class RecyclerListado extends AppCompatActivity {
     ActionBar actionBar;
     RecyclerView rvListado;
     RecyclerView.LayoutManager miLayoutManagerListado;
-    ImageView
+
     Toolbar tb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
