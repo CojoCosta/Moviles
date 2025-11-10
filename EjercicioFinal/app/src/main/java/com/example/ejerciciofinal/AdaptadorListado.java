@@ -53,6 +53,12 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.MyVi
         if (p.getFavorita()){
             holder.getIvFav().setImageResource(R.drawable.iconofav);
         }
+        if (selectedPos == position){
+            holder.itemView.setBackgroundResource(R.color.naranja);
+        } else{
+            holder.itemView.setBackgroundResource(R.color.gris);
+
+        }
 
     }
 
