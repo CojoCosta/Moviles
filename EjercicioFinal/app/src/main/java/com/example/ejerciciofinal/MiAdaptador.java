@@ -27,11 +27,10 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
             notifyItemChanged(selectedPos);
         } else{
             if (this.selectedPos != RecyclerView.NO_POSITION){
-                notifyItemChanged(selectedPos);
-            } else{
-                this.selectedPos = selectedPos;
-                notifyItemChanged(selectedPos);
+                notifyItemChanged(this.selectedPos);
             }
+            this.selectedPos = selectedPos;
+            notifyItemChanged(selectedPos);
         }
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -43,6 +42,13 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
             tvDirector = viewElemento.findViewById(R.id.textView2);
             imageView = viewElemento.findViewById(R.id.imageView);
             imageViewPG = viewElemento.findViewById(R.id.imageView2);
+            viewElemento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int selectedPos = getAdapterPosition();
+                    setSelectedPos(selectedPos);
+                }
+            });
         }
         public TextView obtenerTitulo(){
             return tvTitulo;

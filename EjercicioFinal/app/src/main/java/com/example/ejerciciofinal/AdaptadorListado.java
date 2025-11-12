@@ -1,5 +1,7 @@
 package com.example.ejerciciofinal;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,10 @@ import java.util.ArrayList;
 
 public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.MyViewHolder> {
     ArrayList<Pelicula> peliculas;
-    public AdaptadorListado (ArrayList<Pelicula> peliculas){
+    Context contexto;
+    public AdaptadorListado (ArrayList<Pelicula> peliculas, Context contexto){
         this.peliculas = peliculas;
+        this.contexto = contexto;
     }
     int selectedPos = RecyclerView.NO_POSITION;
     public  int getSelectedPos(){
@@ -25,11 +29,11 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.MyVi
             notifyItemChanged(selectedPos);
         } else {
             if (this.selectedPos != RecyclerView.NO_POSITION) {
-                notifyItemChanged(selectedPos);
-            } else {
-                this.selectedPos = selectedPos;
-                notifyItemChanged(selectedPos);
+                notifyItemChanged(this.selectedPos);
             }
+                this.selectedPos = selectedPos;
+            notifyItemChanged(selectedPos);
+
         }
     }
 
@@ -46,12 +50,14 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.MyVi
         Pelicula p = this.peliculas.get(position);
         holder.getDirector().setText(p.getDirector());
         holder.getFecha().setText(p.getFecha() + "");
-        holder.getDuracion().setText(p.getDuracion());
+        holder.getDuracion().setText(p.getDuracion()+"");
         holder.getSala().setText(p.getSala());
         holder.getCaratula().setImageResource(p.getPortada());
         holder.getIvPg().setImageResource(p.getClasi());
         if (p.getFavorita()){
-            holder.getIvFav().setImageResource(R.drawable.iconofav);
+            holder.getIvFav().setImageResource(R.drawable.star);
+        } else {
+            holder.getIvFav().setImageResource(0);
         }
         if (selectedPos == position){
             holder.itemView.setBackgroundResource(R.color.naranja);
@@ -66,7 +72,22 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.MyVi
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            director = itemView.findViewById(R.id.director);
+            fecha = itemView.findViewById(R.id.fecha);
+            duracion = itemView.findViewById(R.id.duracion);
+            sala = itemView.findViewById(R.id.sala);
+            caratula = itemView.findViewById(R.id.ivCaratula);
+            ivPg = itemView.findViewById(R.id.ivPg);
+            ivFav = itemView.findViewById(R.id.ivFav);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int selectedPos = getAdapterPosition();
+                    setSelectedPos(selectedPos);
+                    Intent lanzaryoutube = new Intent(contexto, ActivityListado.class);
 
+                }
+            });
         }
         public TextView getDirector(){
             return director;

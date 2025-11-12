@@ -3,21 +3,25 @@ package com.example.ejerciciofinal;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class RecyclerListado extends AppCompatActivity {
     ActionBar actionBar;
     RecyclerView rvListado;
     RecyclerView.LayoutManager miLayoutManagerListado;
-
+    AdaptadorListado adaptadorListado;
+    ArrayList<Pelicula> peliculas;
     Toolbar tb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +33,16 @@ public class RecyclerListado extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        rvListado = findViewById(R.id.recyclerListado);
-        rvListado.setLayoutManager(miLayoutManagerListado);
+        peliculas = Datos.rellenaPeliculas();
         tb = findViewById(R.id.toolbar2);
+        rvListado = findViewById(R.id.recyclerListado);
+        setSupportActionBar(tb);
+        adaptadorListado = new AdaptadorListado(peliculas, this);
+        miLayoutManagerListado = new GridLayoutManager(this, 1);
+        rvListado.setLayoutManager(miLayoutManagerListado);
+        rvListado.setAdapter(adaptadorListado);
+        actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

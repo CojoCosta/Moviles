@@ -1,5 +1,6 @@
 package com.example.ejerciciofinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -78,25 +79,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         ab = getSupportActionBar();
         int id =item.getItemId();
-            if (id == R.id.listado){
-                Toast.makeText(this, "Listado", Toast.LENGTH_SHORT).show();
-                return true;
-            }else if(id == R.id.listaFavs){
-                Toast.makeText(this, "Favoritas", Toast.LENGTH_SHORT).show();
-                return true;
-            }else if (id == R.id.añadir){
-                Toast.makeText(this, "Añadida", Toast.LENGTH_SHORT).show();
-                return true;
-            }else if(id == R.id.mostrar){
-                Toast.makeText(this, "Mostrar", Toast.LENGTH_SHORT).show();
-                return true;
-            }else if (id == R.id.pelisFav){
-                Toast.makeText(this, "Favoritas2", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-
-
+        if (id == R.id.listado){
+            Toast.makeText(this, "Listado", Toast.LENGTH_SHORT).show();
+            Intent it = new Intent(MainActivity.this , RecyclerListado.class);
+            startActivity(it);
+        }else if(id == R.id.listaFavs){
+            Toast.makeText(this, "Favoritas", Toast.LENGTH_SHORT).show();
+        }else if (id == R.id.añadir){
+            Toast.makeText(this, "Añadida", Toast.LENGTH_SHORT).show();
+        }else if(id == R.id.mostrar){
+            Toast.makeText(this, "Mostrar", Toast.LENGTH_SHORT).show();
+        }else if (id == R.id.pelisFav){
+            Toast.makeText(this, "Favoritas2", Toast.LENGTH_SHORT).show();
+        }
         return super.onOptionsItemSelected(item);
     }
-
 }
