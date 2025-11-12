@@ -57,9 +57,7 @@ public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.MyVi
             holder.itemView.setBackgroundResource(R.color.naranja);
         } else{
             holder.itemView.setBackgroundResource(R.color.gris);
-
         }
-
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
