@@ -1,5 +1,6 @@
 package com.example.ejerciciofinal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +22,8 @@ public class ListadoFavoritos extends AppCompatActivity {
     ListView listadoFav;
     ArrayList<Pelicula> peliculas;
     ActionBar ab;
-    ArrayAdapter<Pelicula> adapter;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> peliYDire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,18 @@ public class ListadoFavoritos extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        peliculas = Datos.rellenaPeliculas();
+        peliculas = new ArrayList<>();
+        Intent peliculasDevueltas = getIntent();
+        peliculas= (ArrayList<Pelicula>) peliculasDevueltas.getSerializableExtra("pelis");
+        for (int i = 0; i < peliculas.size(); i++) {
+            peliYDire.add(String.format("Titulo: %s \\n Director: %s",peliculas.get(i).titulo, peliculas.get(i).director));
+        }
         tb = findViewById(R.id.toolbar3);
         listadoFav = findViewById(R.id.listadoFav);
         setSupportActionBar(tb);
         ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,peliculas);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         listadoFav.setAdapter(adapter);
         listadoFav.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
