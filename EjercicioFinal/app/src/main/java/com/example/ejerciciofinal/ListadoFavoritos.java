@@ -36,14 +36,17 @@ public class ListadoFavoritos extends AppCompatActivity {
             return insets;
         });
         peliculas = new ArrayList<>();
+
+        tb = findViewById(R.id.toolbar3);
+        setSupportActionBar(tb);
+        listadoFav = findViewById(R.id.listadoFav);
+
         Intent peliculasDevueltas = getIntent();
         peliculas= (ArrayList<Pelicula>) peliculasDevueltas.getSerializableExtra("pelis");
         for (int i = 0; i < peliculas.size(); i++) {
             peliYDire.add(String.format("Titulo: %s \\n Director: %s",peliculas.get(i).titulo, peliculas.get(i).director));
         }
-        tb = findViewById(R.id.toolbar3);
-        listadoFav = findViewById(R.id.listadoFav);
-        setSupportActionBar(tb);
+
         ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
