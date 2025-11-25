@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
             Intent it = new Intent(MainActivity.this , RecyclerListado.class);
             startActivity(it);
         }else if(id == R.id.listaFavs){
+            Intent fav = new Intent(MainActivity.this, ListadoFavoritos.class);
+            fav.putExtra("pelis", peliculas);
+            startActivity(fav);
             Toast.makeText(this, "Favoritas", Toast.LENGTH_SHORT).show();
         }else if (id == R.id.añadir){
             Toast.makeText(this, "Añadida", Toast.LENGTH_SHORT).show();

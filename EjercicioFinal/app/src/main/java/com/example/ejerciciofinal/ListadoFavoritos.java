@@ -2,6 +2,7 @@ package com.example.ejerciciofinal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,8 +36,7 @@ public class ListadoFavoritos extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        peliculas = new ArrayList<>();
-
+        peliYDire = new ArrayList<>();
         tb = findViewById(R.id.toolbar3);
         setSupportActionBar(tb);
         listadoFav = findViewById(R.id.listadoFav);
@@ -44,12 +44,13 @@ public class ListadoFavoritos extends AppCompatActivity {
         Intent peliculasDevueltas = getIntent();
         peliculas= (ArrayList<Pelicula>) peliculasDevueltas.getSerializableExtra("pelis");
         for (int i = 0; i < peliculas.size(); i++) {
-            peliYDire.add(String.format("Titulo: %s \\n Director: %s",peliculas.get(i).titulo, peliculas.get(i).director));
+            peliYDire.add(String.format("Titulo: %s \n Director: %s",peliculas.get(i).titulo, peliculas.get(i).director));
+
         }
 
         ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,peliYDire);
         listadoFav.setAdapter(adapter);
         listadoFav.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
@@ -59,5 +60,14 @@ public class ListadoFavoritos extends AppCompatActivity {
 
             }
         });
+    }
+     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+         switch (item.getItemId()) {
+             case android.R.id.home:
+                 onBackPressed();
+                 return true;
+         }
+         return super.onOptionsItemSelected(item);
     }
 }
