@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AdaptadorListado extends RecyclerView.Adapter<AdaptadorListado.MyViewHolder> {
     ArrayList<Pelicula> peliculas;
     Context contexto;
-    public AdaptadorListado (ArrayList<Pelicula> peliculas, Context contexto){
+    public AdaptadorListado(ArrayList<Pelicula> peliculas, Context contexto){
         this.peliculas = peliculas;
         this.contexto = contexto;
     }

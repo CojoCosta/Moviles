@@ -2,7 +2,6 @@ package com.example.ejerciciofinal;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
