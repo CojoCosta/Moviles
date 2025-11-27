@@ -13,15 +13,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Datos extends AppCompatActivity {
-    public void watchYoutubeVideo(String id) {
-        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + id));
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + id));
-        try {
-            startActivity(appIntent);
-        } catch (ActivityNotFoundException ex) {
-            startActivity(webIntent);
-        }
-    }
+    //public void watchYoutubeVideo(String id) {
+    //    Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + id));
+    //    Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + id));
+    //    try {
+    //        startActivity(appIntent);
+    //    } catch (ActivityNotFoundException ex) {
+    //        startActivity(webIntent);
+    //    }
+    //}
 
 
     public static ArrayList<Pelicula> rellenaPeliculas() {
