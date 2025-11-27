@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(miLayoutManager);
         rv.setAdapter(miAdaptador);
         setSupportActionBar(tb);
+        ab = getSupportActionBar();
         numeroColumnas = true;
         btOcultar = findViewById(R.id.imageButton);
         btOcultar.setOnClickListener(new View.OnClickListener() {
