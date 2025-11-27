@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rv;
     ActionBar ab;
     ImageButton btOcultar;
-    RecyclerView.LayoutManager miLayoutManager;
+    RecyclerView.LayoutManager miLayoutManager, miLayoutManager2;
     MiAdaptador miAdaptador;
     TextView tv;
+    boolean numeroColumnas;
     ArrayList<Pelicula> peliculas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +47,14 @@ public class MainActivity extends AppCompatActivity {
         peliculas = Datos.rellenaPeliculas();
         miAdaptador = new MiAdaptador(peliculas);
         miLayoutManager = new GridLayoutManager(this, 1);
+        miLayoutManager2 = new GridLayoutManager(this, 2);
         tb = findViewById(R.id.toolbar);
         rv = findViewById(R.id.recyclerView);
         tv = findViewById(R.id.textView3);
         rv.setLayoutManager(miLayoutManager);
         rv.setAdapter(miAdaptador);
         setSupportActionBar(tb);
-
+        numeroColumnas = true;
         btOcultar = findViewById(R.id.imageButton);
         btOcultar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,10 +91,19 @@ public class MainActivity extends AppCompatActivity {
             startActivity(fav);
             Toast.makeText(this, "Favoritas", Toast.LENGTH_SHORT).show();
         }else if (id == R.id.añadir){
+
             Toast.makeText(this, "Añadida", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.mostrar){
+            if (numeroColumnas) {
+                rv.setLayoutManager(miLayoutManager);
+                numeroColumnas = false;
+            } else{
+                rv.setLayoutManager(miLayoutManager2);
+                numeroColumnas = true;
+            }
             Toast.makeText(this, "Mostrar", Toast.LENGTH_SHORT).show();
         }else if (id == R.id.pelisFav){
+
             Toast.makeText(this, "Favoritas2", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
